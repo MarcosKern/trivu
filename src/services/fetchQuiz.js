@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const PROTOCOL = import.meta.env.REACT_APP_PROTOCOL || 'http'
-const MYSQLHOST = import.meta.env.REACT_APP_MYSQLHOST || 'localhost:3000';
+const PROTOCOL = 'https'
+const MYSQLHOST = 'trivuapi.onrender.com';
 
 const fetch = axios.create({
   baseURL: `${PROTOCOL}://${MYSQLHOST}`,
