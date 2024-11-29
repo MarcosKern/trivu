@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate }  from "react-router";
 
 import PropTypes from 'prop-types';
-import MyContext from './context';
+import MyContext from '../context/Context';
 import getQuiz from '../services/fetchQuiz';
 
 function Provider({ children }) {

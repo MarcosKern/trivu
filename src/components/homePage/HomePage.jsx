@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import MyContext from "../../context/context"
+import MyContext from "../../context/Context"
 
 export default function HomePage() {
   const { fetchQuiz, setThemes, setPrizes } = useContext(MyContext);

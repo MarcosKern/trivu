@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import MyContext from "../../context/context"
+import MyContext from "../../context/Context"
 
 export default function Game() {
     const { quiz, fetchQuiz, navigate } = useContext(MyContext);
