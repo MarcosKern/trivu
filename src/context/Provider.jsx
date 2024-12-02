@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useNavigate }  from "react-router";
 
-import PropTypes from 'prop-types';
-import MyContext from '../context/Context';
-import getQuiz from '../services/fetchQuiz';
+import PropTypes from "prop-types";
+import MyContext from "../context/Context";
+import getQuiz from "../services/fetchQuiz";
 
 function Provider({ children }) {
   const [quiz, setQuiz] = useState();
@@ -18,9 +18,9 @@ function Provider({ children }) {
     getQuiz('GET', `getQuiz/${themes[Math.floor(Math.random() * themes.length)]}/${prizes[Math.floor(Math.random() * prizes.length)]}`)
     .then((data) => {
       setQuiz(data.data);
-      setLoading(false)
+      setLoading(false);
     });
-  }
+  };
 
   const value = {
     fetchQuiz,
@@ -31,7 +31,7 @@ function Provider({ children }) {
     themes,
     loading,
     setLoading,
-  }
+  };
 
   return (
     <MyContext.Provider value={ value }>
