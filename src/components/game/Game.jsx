@@ -25,7 +25,9 @@ export default function Game() {
 
   return(
     loading
-    ?  <span className="loader"></span>
+    ?  <section className="loaderScreen">
+      <span className="loader"></span>
+    </section>
     : <section className="game">
       {
         estadoDoJogo
