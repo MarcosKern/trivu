@@ -9,14 +9,18 @@ function Provider({ children }) {
   const [quiz, setQuiz] = useState();
   const [prizes, setPrizes] = useState();
   const [themes, setThemes] = useState();
+  const [ loading, setLoading ] = useState(true);
 
   const navigate = useNavigate();
 
-  const fetchQuiz = async () => getQuiz('GET', `getQuiz/${themes[Math.floor(Math.random() * themes.length)]}/${prizes[Math.floor(Math.random() * prizes.length)]}`)
+  const fetchQuiz = async () => {
+    navigate("/game");
+    getQuiz('GET', `getQuiz/${themes[Math.floor(Math.random() * themes.length)]}/${prizes[Math.floor(Math.random() * prizes.length)]}`)
     .then((data) => {
       setQuiz(data.data);
-      navigate("/game");
+      setLoading(false)
     });
+  }
 
   const value = {
     fetchQuiz,
@@ -24,6 +28,9 @@ function Provider({ children }) {
     setThemes,
     setPrizes,
     navigate,
+    themes,
+    loading,
+    setLoading,
   }
 
   return (

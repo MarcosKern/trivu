@@ -1,0 +1,28 @@
+.home {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 1em;
+}
+
+.menu > button {
+    padding: 2em;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--color-1);
+    transition: all ease-in-out .3s;
+}
+
+.menu > button:hover {
+    cursor: pointer;
+    background-color: var(--color-2);
+}
+
+.menu > button > img {
+    color: white;
+}

@@ -1,0 +1,94 @@
+header {
+    padding: 1em;
+}
+
+.configs {
+    background-color: var(--background-color-2);
+    width: 30%;
+    height: 100%;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    filter: drop-shadow(inset 0px 0px 20px black);
+}
+
+.themesMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    width: 80%;
+    align-self: center;
+}
+
+.themes {
+    display: flex;
+    flex-direction: column;
+    gap: .3em;
+}
+
+.themes > p {
+    background-color: var(--color-1);
+    display: flex;
+    padding: .5em;
+    justify-content: space-between;
+    border-radius: 5px;
+    text-transform: capitalize;
+}
+
+.deleteTheme {
+    background-color: transparent !important;
+    border: none;
+    filter: brightness(0) invert(1);
+    transition: all ease-in-out .3s;
+}
+
+.deleteTheme:hover {
+    filter: brightness(1);
+}
+
+.deleteTheme:hover {
+    cursor: pointer;
+}
+
+.addTheme {
+    display: flex;
+    width: 100%;
+    gap: .3em;
+}
+
+.addTheme > input {
+    flex: 1;
+    padding: .8em;
+    border-radius: 5px;
+    border: solid 2px var(--color-2);
+}
+
+.addTheme > button {
+    padding: .8em 1.2em;
+    background-color: var(--color-2);
+    border: none;
+    border-radius: 5px;
+    transition: all ease-in-out .3s;
+}
+
+.addTheme > button:hover {
+    cursor: pointer;
+}
+
+.addTheme > button:disabled {
+    background-color: var(--background-color-1);
+}
+
+.addTheme > button:disabled:hover {
+    cursor: not-allowed;
+}
+
+.back {
+    padding: 1em;
+}
+
+.back:hover {
+    cursor: pointer;
+}

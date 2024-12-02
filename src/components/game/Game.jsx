@@ -1,13 +1,17 @@
-import { useContext, useState } from "react"
-import MyContext from "../../context/Context"
+import { useContext, useState } from "react";
+import MyContext from "../../context/Context";
+import rollBackIcon from "../../assets/rollback-11.svg";
+import homeIcon from "../../assets/home-360.svg";
+import "./game.css";
 
 export default function Game() {
-    const { quiz, fetchQuiz, navigate } = useContext(MyContext);
+    const { quiz, fetchQuiz, navigate, loading, setLoading } = useContext(MyContext);
     const [ selectedAnswer, setSelectedAnswer ] = useState('');
     const [ estadoDoJogo, setEstadoDoJogo] = useState(true);
     const [ canSubmit, setCanSubmit ] = useState(true);
 
     const novoJogo = () => {
+        setLoading(true);
         setEstadoDoJogo(true);
         setCanSubmit(true);
         setSelectedAnswer('');
@@ -15,19 +19,21 @@ export default function Game() {
     }
 
     return(
-        <section>
+        loading
+        ?  <span className="loader"></span>
+        : <section className="game">
             {
                 estadoDoJogo
-                    ? <section>
+                    ? <section className="inProgress">
                     <h4>{quiz.question}</h4>
                         <form className="options" onInput={ () => setCanSubmit(false) }>
                             { quiz.answers.sort().map((resposta, index) => {
-                                return (<p key={index}><input type="radio" id={index} name="resposta" onClick={ () => setSelectedAnswer(resposta) }/><label for={index}>{resposta}</label></p>)
+                                return (<p key={index}><input type="radio" id={index} name="resposta" onClick={ () => setSelectedAnswer(resposta) } hidden /><label for={index}>{resposta}</label></p>)
                             }) }
                         </form>
-                        <button disabled={ canSubmit } onClick={ () => setEstadoDoJogo(false) }>Enviar resposta</button>
+                        <button className="submit" disabled={ canSubmit } onClick={ () => setEstadoDoJogo(false) }>Enviar resposta</button>
                     </section>
-                    : <section>
+                    : <section className="endGame">
                         {
                             selectedAnswer == quiz.correctAnswer
                                 ? <div>
@@ -40,8 +46,8 @@ export default function Game() {
                                 </div>
                         }
                         <section>
-                            <button onClick={ () => novoJogo() }>Jogar novamente</button>
-                            <button onClick={ () => navigate('/') }>Voltar ao menu</button>
+                            <button onClick={ () => novoJogo() } title="Jogar novamente" > <img src={rollBackIcon} width={50} alt="Jogar novamente"/> </button>
+                            <button onClick={ () => navigate('/') } title="Voltar ao menu" > <img src={homeIcon} width={50} alt="Voltar para o menu" /> </button>
                         </section>
                     </section>
             }
